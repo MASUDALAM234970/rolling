@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rolling/app/modules/auth/views/Location_views.dart';
 import 'package:rolling/app/modules/splash/controllers/onboarding_view_controller.dart';
 
 class Onboardingview extends StatefulWidget {
@@ -15,6 +16,7 @@ class Onboardingview extends StatefulWidget {
 class _OnboardingviewState extends State<Onboardingview> {
   @override
   Widget build(BuildContext context) {
+
     final OnboardingController _controller = Get.put(OnboardingController());
 
     return Scaffold(
@@ -69,7 +71,7 @@ class _OnboardingviewState extends State<Onboardingview> {
               width: double.infinity,
               height: 52,
               child: ElevatedButton(
-                onPressed: () => _controller.navigateToUserAccount,
+                onPressed: () => Get.to((LocationPermissionScreen() )),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF0D1A3E),
                   shape: RoundedRectangleBorder(
@@ -96,7 +98,7 @@ class _OnboardingviewState extends State<Onboardingview> {
               width: double.infinity,
               height: 56,
               child: OutlinedButton(
-                onPressed: () => _controller.navigateToDriverAccount,
+                onPressed: () {},
                 style: OutlinedButton.styleFrom(
                   side: const BorderSide(color: Color(0xFF0D1A3E), width: 2),
                   shape: RoundedRectangleBorder(
