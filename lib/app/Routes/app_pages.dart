@@ -1,6 +1,6 @@
-
-
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:rolling/app/modules/auth/bindings/location_bindings.dart';
+import 'package:rolling/app/modules/auth/views/Location_views.dart';
 import 'package:rolling/app/modules/splash/views/OnboardingView.dart';
 
 import '../modules/splash/bindings/Onboarding_bindings.dart';
@@ -18,16 +18,21 @@ class AppPages {
     //splashScreen section
     GetPage(
       name: _Paths.SPLASHSCREEN,
-      page: () =>   SplashScreenView(),
+      page: () => SplashScreenView(),
       binding: SplashScreenBinding(),
     ),
 
-     //onboarding screen
-
+    //onboarding screen
     GetPage(
       name: _Paths.ONBOARDINGSCREEN,
-      page: () =>Onboardingview(),
+      page: () => Onboardingview(),
       binding: OnboardingBindings(),
+    ),
+
+    GetPage(
+      name: _Paths.LOCATIONSCREEN,
+      page: () => LocationPermissionScreen(),
+      binding: LocationBindings(),
     ),
 
     // //authentication section

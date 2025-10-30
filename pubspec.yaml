@@ -20,6 +20,8 @@ dependencies:
   latlong2: any
   flutter_screenutil: any
   google_fonts: any
+  permission_handler: ^12.0.1
+  geolocator: ^13.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -50,5 +52,7 @@ flutter:
   assets:
      - assets/splash/car.png
      - assets/splash/
+     - assets/auth/map.png
+     - assets/auth/
 
 
