@@ -15,7 +15,7 @@ class OnboardingController extends GetxController {
       colorText: Colors.white,
       duration: const Duration(seconds: 2),
     );
-    Get.toNamed(Routes.LOCATIONSCREEN); // User flow
+    //Get.toNamed(Routes.LOGINSCREEN); // User flow
   }
 
   void navigateToDriverAccount() {

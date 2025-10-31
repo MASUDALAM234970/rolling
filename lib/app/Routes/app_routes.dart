@@ -9,8 +9,9 @@ abstract class Routes {
   static const LOCATIONSCREEN = _Paths.LOCATIONSCREEN;
 
   // static const NAVBARSCREEN = _Paths.NAVBARSCREEN;
-  // static const LOGINSCREEN = _Paths.LOGINSCREEN;
-  // static const SIGNUPSCREEN = _Paths.SIGNUPSCREEN;
+   static const LOGINSCREEN = _Paths.LOGINSCREEN;
+
+   static const SIGNUPSCREEN = _Paths.SIGNUPSCREEN;
   // static const FORGETSCREEN = _Paths.FORGETSCREEN;
   // static const VERIFICATIONSCREEN = _Paths.VERIFICATIONSCREEN;
   // static const NewPasswordScreen = _Paths.NEWPASSWORDSCREEN;
@@ -30,8 +31,9 @@ abstract class _Paths {
   static const LOCATIONSCREEN = '/location-screen';
   //
   // static const NAVBARSCREEN = '/navbar-screen';
-  // static const LOGINSCREEN = '/login-screen';
-  // static const SIGNUPSCREEN = '/signup-screen';
+
+   static const LOGINSCREEN = '/login-screen';
+   static const SIGNUPSCREEN = '/signup-screen';
   // static const FORGETSCREEN = '/forget-screen';
   // static const VERIFICATIONSCREEN = '/verification-screen';
   // static const NEWPASSWORDSCREEN = '/password-screen';

@@ -3,6 +3,10 @@ import 'package:rolling/app/modules/auth/bindings/location_bindings.dart';
 import 'package:rolling/app/modules/auth/views/Location_views.dart';
 import 'package:rolling/app/modules/splash/views/OnboardingView.dart';
 
+import '../modules/auth/bindings/auth_bindings.dart';
+import '../modules/auth/bindings/auth_signUo_binfings.dart';
+import '../modules/auth/views/LoginScreen.dart';
+import '../modules/auth/views/SignUpScreen.dart';
 import '../modules/splash/bindings/Onboarding_bindings.dart';
 import '../modules/splash/bindings/splash_bindings.dart';
 import '../modules/splash/views/splashscreenView.dart';
@@ -12,7 +16,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SPLASHSCREEN;
+  static const INITIAL = Routes.LOGINSCREEN;
 
   static final routes = [
     //splashScreen section
@@ -35,18 +39,18 @@ class AppPages {
       binding: LocationBindings(),
     ),
 
-    // //authentication section
-    // GetPage(
-    //   name: _Paths.LOGINSCREEN,
-    //   page: () => const LoginView(),
-    //   binding: AuthBinding(),
-    // ),
+    //authentication section
+    GetPage(
+      name: _Paths.LOGINSCREEN,
+      page: () => LoginScreen(),
+      binding: AuthBinding(),
+    ),
     //
-    // GetPage(
-    //   name: _Paths.SIGNUPSCREEN,
-    //   page: () => const Signupview(),
-    //   binding: AuthBinding(),
-    // ),
+    GetPage(
+      name: _Paths.SIGNUPSCREEN,
+      page: () =>  SignUpScreen(),
+      binding: SignUpbinding(),
+    ),
     // GetPage(
     //   name: _Paths.FORGETSCREEN,
     //   page: () =>  ForgotPasswordScreen(),
