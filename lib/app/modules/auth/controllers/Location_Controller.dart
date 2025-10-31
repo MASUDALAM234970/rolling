@@ -39,7 +39,7 @@ class LocationController extends GetxController {
         print("Location: ${position.latitude}, ${position.longitude}");
 
         // Navigate to next screen
-        Get.offNamed(Routes.SPLASHSCREEN); // Replace with your route
+        Get.toNamed(Routes.LOGINSCREEN);
       } catch (e) {
         Get.snackbar("Error", "Failed to get location");
       }
