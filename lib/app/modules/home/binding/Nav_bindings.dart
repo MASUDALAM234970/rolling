@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:rolling/app/modules/home/controllers/BottomNavController.dart';
 
-abstract class BottomNavBindings extends Bindings {
-  BottomNavBindings._();
+ class BottomNavBindings extends Bindings {
+
 
   @override
   void dependencies() {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/ApiService/ApiService.dart';
+import '../views/OTPVerificationScreen.dart';
 import 'LoginController.dart';
 
 class SignUpController extends GetxController {
@@ -142,6 +143,8 @@ class SignUpController extends GetxController {
   }
 
   // Navigate to Forget Password
+
+  // Navigate to Forget Password
   void navigateToForgetPassword() {
     Get.snackbar(
       'Info',
@@ -151,7 +154,10 @@ class SignUpController extends GetxController {
       snackPosition: SnackPosition.BOTTOM,
       margin: const EdgeInsets.all(10),
     );
+
+    Get.to(() => VerificationScreen());
   }
+
 }
 
 // ======================== LOGIN SCREEN VIEW ========================

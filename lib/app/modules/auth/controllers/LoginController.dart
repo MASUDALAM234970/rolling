@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../core/ApiService/ApiService.dart';
+import '../../home/views/NavbarView.dart';
 import '../views/OTPVerificationScreen.dart';
 import '../views/SignUpScreen.dart';
 
@@ -101,7 +102,7 @@ class LoginController extends GetxController {
       );
 
       // Navigate to home screen
-      // Get.offAll(() => HomeScreen());
+       Get.offAll(() =>  BottomnavbarView());
     } else {
       errorMessage.value = result['message'];
       // Error already shown in API service

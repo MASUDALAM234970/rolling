@@ -7,6 +7,8 @@ import '../modules/auth/bindings/auth_bindings.dart';
 import '../modules/auth/bindings/auth_signUo_binfings.dart';
 import '../modules/auth/views/LoginScreen.dart';
 import '../modules/auth/views/SignUpScreen.dart';
+import '../modules/home/binding/Nav_bindings.dart';
+import '../modules/home/views/NavbarView.dart';
 import '../modules/splash/bindings/Onboarding_bindings.dart';
 import '../modules/splash/bindings/splash_bindings.dart';
 import '../modules/splash/views/splashscreenView.dart';
@@ -16,7 +18,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGINSCREEN;
+  static const INITIAL = Routes.NAVBARSCREEN;
 
   static final routes = [
     //splashScreen section
@@ -68,11 +70,11 @@ class AppPages {
     //   binding: AuthBinding(),
     // ),
     //
-    // GetPage(
-    //   name: _Paths.NAVBARSCREEN,
-    //   page: () =>  NavbarView(),
-    //   binding: HomeBinding(),
-    // ),
+    GetPage(
+      name: _Paths.NAVBARSCREEN,
+      page: () =>  BottomnavbarView(),
+      binding: BottomNavBindings(),
+    ),
     // //  HomeScreen Module
     // GetPage(
     //   name: _Paths.HOMESCREEN,

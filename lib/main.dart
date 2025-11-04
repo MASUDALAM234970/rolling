@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import 'app/Routes/app_pages.dart';
 
-
 void main() {
   runApp(
     ScreenUtilInit(
