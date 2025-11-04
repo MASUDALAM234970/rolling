@@ -59,5 +59,7 @@ flutter:
      - assets/splash/
      - assets/auth/map.png
      - assets/auth/
+     - assets/home/nab/home.png
+     - assets/home/nab/
 
 

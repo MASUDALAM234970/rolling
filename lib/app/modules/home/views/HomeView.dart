@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/HomeController.dart';
 import '../model/ServiceCategory.dart';
+import 'NavbarView.dart';
 
 
 
@@ -11,8 +12,11 @@ import '../model/ServiceCategory.dart';
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+
+    final HomeController controller= Get.put(HomeController());
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       body: SafeArea(
@@ -235,6 +239,8 @@ class HomeView extends GetView<HomeController> {
           ),
         ),
       ),
+
+
     );
   }
 }

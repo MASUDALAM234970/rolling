@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 
+import '../../home/controllers/BottomNavController.dart';
 import '../controllers/LoginController.dart';
 
 class AuthBinding extends Bindings {
@@ -8,5 +9,6 @@ class AuthBinding extends Bindings {
     // Register your authentication dependencies here
 
     Get.put<LoginController>(LoginController());
+    Get.lazyPut<BottomNavController>(() => BottomNavController());
   }
 }

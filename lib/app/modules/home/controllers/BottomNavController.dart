@@ -1,29 +1,25 @@
 import 'package:get/get.dart';
 
+import 'package:flutter/material.dart';
+
+
+import '../views/HomeView.dart';
+
 class BottomNavController extends GetxController {
-  var currentIndex = 0.obs;
+  // Reactive index tracking
+  var index = 0.obs;
 
-  void changeIndex(int index) {
-    currentIndex.value = index;
+  // Screens to navigate between (HomeScreenView as first screen)
+  final screens = [
+    HomeView(),
 
-    // Navigate to different screens based on index
-    switch (index) {
-      case 0:
-      // Navigate to Home
-        Get.snackbar('Navigation', 'Home');
-        break;
-      case 1:
-      // Navigate to Services
-        Get.snackbar('Navigation', 'Services');
-        break;
-      case 2:
-      // Navigate to Activity
-        Get.snackbar('Navigation', 'Activity');
-        break;
-      case 3:
-      // Navigate to Account
-        Get.snackbar('Navigation', 'Account');
-        break;
-    }
+
+   // ProductScreenViews(),
+    //CustomerSupportView(),
+   // ProfileScreenViews(),
+  ];
+
+  void changeIndex(int i) {
+    index.value = i;
   }
 }

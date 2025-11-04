@@ -15,7 +15,7 @@ extension ResetPasswordApiExtension on ApiService {
     required String confirmPassword,
   }) async {
     try {
-      print('🔵 Reset Password Request URL: $baseUrl/reset-password//');
+      print('🔵 Reset Password Request URL: $baseUrl/reset-password/');
       print(
         '🔵 Reset Password Request Body: ${jsonEncode({'email_or_phone': emailOrPhone, 'new_password': newPassword, 'confirm_password': confirmPassword})}',
       );

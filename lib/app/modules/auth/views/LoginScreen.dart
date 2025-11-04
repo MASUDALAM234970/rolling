@@ -142,40 +142,40 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
 
-              const SizedBox(height: 12),
+              SizedBox(height: 0.h),
 
               // Forget Password
-              Align(
-                alignment: Alignment.centerRight,
+              Padding(
+                padding: const EdgeInsets.only(left: 150),
                 child: TextButton(
                   onPressed: controller.navigateToForgetPassword,
-                  child: const Text(
+                  child: Text(
                     'Forget password?',
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 15,
+                    style: GoogleFonts.inter(
+                      color: Color(0xffC8102E),
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 15.h),
 
               // Login Button
               Obx(
                 () => SizedBox(
                   width: double.infinity,
-                  height: 56,
+                  height: 52,
                   child: ElevatedButton(
                     onPressed: controller.isLoading.value
                         ? null
                         : controller.login,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1E3A5F),
+                      backgroundColor: const Color(0xFF0D1A3E),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(8.r),
                       ),
                       elevation: 0,
                     ),
@@ -188,11 +188,12 @@ class LoginScreen extends StatelessWidget {
                               strokeWidth: 2,
                             ),
                           )
-                        : const Text(
+                        : Text(
                             'Log In',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
+                            style: GoogleFonts.inter(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              color: Color(0xffFFFFFF),
                             ),
                           ),
                   ),
@@ -240,15 +241,19 @@ class LoginScreen extends StatelessWidget {
               // Divider with "or"
               Row(
                 children: [
-                  Expanded(child: Divider(color: Colors.grey[300])),
+                  Expanded(child: Divider(color: Color(0xffDFE0E4))),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Text(
                       'or',
-                      style: TextStyle(color: Colors.grey[500], fontSize: 14),
+                      style: GoogleFonts.inter(
+                        color: Color(0xffDFE0E4),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  Expanded(child: Divider(color: Colors.grey[300])),
+                  Expanded(child: Divider(color: Color(0xffDFE0E4))),
                 ],
               ),
 
@@ -257,22 +262,26 @@ class LoginScreen extends StatelessWidget {
               // Gmail Sign Up Button
               SizedBox(
                 width: double.infinity,
-                height: 56,
+                height: 52.h,
                 child: OutlinedButton.icon(
                   onPressed: controller.loginWithGmail,
-                  icon: const Icon(Icons.email, color: Colors.red, size: 24),
-                  label: const Text(
+                  icon: Image.asset(
+                    "assets/auth/gmail.png",
+                    width: 20.w,
+                    height: 20.h,
+                  ),
+                  label: Text(
                     'Sign up with Gmail',
-                    style: TextStyle(
-                      fontSize: 16,
+                    style: GoogleFonts.inter(
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF1A1A1A),
+                      color: Color(0xFF5A5A5A),
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.grey[300]!),
+                    side: BorderSide(color: Color(0xffAEAFB2)),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                   ),
                 ),
@@ -283,26 +292,26 @@ class LoginScreen extends StatelessWidget {
               // Facebook Sign Up Button
               SizedBox(
                 width: double.infinity,
-                height: 56,
+                height: 52,
                 child: OutlinedButton.icon(
                   onPressed: controller.loginWithFacebook,
-                  icon: const Icon(
-                    Icons.facebook,
-                    color: Colors.blue,
-                    size: 24,
+                  icon: Image.asset(
+                    "assets/auth/Facebook.png",
+                    width: 24.w,
+                    height: 24.h,
                   ),
-                  label: const Text(
+                  label: Text(
                     'Sign up with Facebook',
-                    style: TextStyle(
-                      fontSize: 16,
+                    style: GoogleFonts.inter(
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF1A1A1A),
+                      color: Color(0xFF5A5A5A),
                     ),
                   ),
                   style: OutlinedButton.styleFrom(
-                    side: BorderSide(color: Colors.grey[300]!),
+                    side: BorderSide(color: Color(0xffAEAFB2)),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                   ),
                 ),
@@ -317,16 +326,20 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text(
                       "Don't have an account? ",
-                      style: TextStyle(color: Colors.grey[600], fontSize: 15),
+                      style: GoogleFonts.inter(
+                        color: Color(0xFFDCD6D6), // blue-700 hex code
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                     GestureDetector(
                       onTap: controller.navigateToSignUp,
-                      child: const Text(
+                      child: Text(
                         'Sign Up',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           color: Color(0xFF1A1A1A),
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
