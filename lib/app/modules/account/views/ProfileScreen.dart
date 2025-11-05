@@ -166,7 +166,7 @@ class ProfileScreen extends GetView<ProfileController> {
           ],
         ),
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
+
     );
   }
 
@@ -248,50 +248,5 @@ class ProfileScreen extends GetView<ProfileController> {
     );
   }
 
-  Widget _buildBottomNavBar() {
-    return Container(
-      height: 70.h,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, -2),
-          ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem(Icons.home_outlined, 'Home', false),
-          _buildNavItem(Icons.grid_view_outlined, 'Services', false),
-          _buildNavItem(Icons.description_outlined, 'Activity', false),
-          _buildNavItem(Icons.person, 'Account', true),
-        ],
-      ),
-    );
-  }
 
-  Widget _buildNavItem(IconData icon, String label, bool isSelected) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          size: 26.sp,
-          color: isSelected ? Colors.black : const Color(0xFF7D7F88),
-        ),
-        SizedBox(height: 4.h),
-        Text(
-          label,
-          style: GoogleFonts.inter(
-            fontSize: 12.sp,
-            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
-            color: isSelected ? Colors.black : const Color(0xFF7D7F88),
-          ),
-        ),
-      ],
-    );
-  }
 }

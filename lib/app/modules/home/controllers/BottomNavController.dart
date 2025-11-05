@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
 
-import 'package:flutter/material.dart';
 
 
+
+import '../../account/views/ProfileScreen.dart';
+import '../../account/views/SettingsScreen.dart';
 import '../views/HomeView.dart';
+import '../views/Servicesviews.dart';
 
 class BottomNavController extends GetxController {
   // Reactive index tracking
@@ -12,6 +15,9 @@ class BottomNavController extends GetxController {
   // Screens to navigate between (HomeScreenView as first screen)
   final screens = [
     HomeView(),
+    Servicesviews(),
+    SettingsScreen(),
+    ProfileScreen()
 
 
    // ProductScreenViews(),
@@ -23,3 +29,5 @@ class BottomNavController extends GetxController {
     index.value = i;
   }
 }
+
+// controllers/BottomNavController.dart
