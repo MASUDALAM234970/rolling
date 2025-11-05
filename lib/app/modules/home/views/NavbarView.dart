@@ -1,70 +1,102 @@
+// views/BottomnavbarView.dart
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../controllers/BottomNavController.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../routes/app_pages.dart';
+import '../controllers/BottomNavController.dart';
 
 class BottomnavbarView extends GetView<BottomNavController> {
   const BottomnavbarView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Initialize controller once (it's already initialized in BottomNavController)
-    final BottomNavController controller = Get.put(BottomNavController());
-
-    // Define the navigation items
-    List<BottomNavigationBarItem> navItems(int current) => [
-      BottomNavigationBarItem(
-        icon: ImageIcon(
-          const AssetImage('assets/home/nab/home.png'),
-          size: 24,
-          color: current == 0 ? Colors.blue : Colors.grey,  // Change colors based on selection
-        ),
-        label: "Home",  // You can add labels here
-      ),
-
-      BottomNavigationBarItem(
-        icon: ImageIcon(
-          const AssetImage('assets/home/nab/services.png'),
-          size: 24,
-          color: current == 2 ? Colors.blue : Colors.grey,  // Change colors based on selection
-        ),
-        label: "Add",
-      ),
-      BottomNavigationBarItem(
-        icon: ImageIcon(
-          const AssetImage('assets/home/nab/activity.png'),
-          size: 24,
-          color: current == 3 ? Colors.blue : Colors.grey,  // Change colors based on selection
-        ),
-        label: "Messages",
-      ),
-      BottomNavigationBarItem(
-        icon: ImageIcon(
-          const AssetImage('assets/home/nab/account.png'),
-          size: 24,
-          color: current == 4 ? Colors.blue : Colors.grey,  // Change colors based on selection
-        ),
-        label: "Profile",
-      ),
-    ];
+    // DO NOT use Get.put() here — GetView already provides controller
+    // Remove: Get.put(BottomNavController())
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Obx(() {
-        // Use the index to show the corresponding screen
-        return controller.screens[controller.index.value];
-      }),
-      bottomNavigationBar: Container(
-        height: 70,  // Set the height of the bottom nav
-        child: BottomNavigationBar(
-          currentIndex: controller.index.value,
-          items: navItems(controller.index.value),
-          onTap: controller.changeIndex,
-          backgroundColor: Colors.transparent,
-          selectedItemColor: Colors.blue,  // Add color when an item is selected
-          unselectedItemColor: Colors.grey,  // Add color for unselected items
-        ),
+
+      // Selected Screen
+      body: Obx(() => controller.screens[controller.index.value]),
+
+      // Bottom Nav
+      bottomNavigationBar: _buildBottomNavBar(),
+    );
+  }
+
+  Widget _buildBottomNavBar() {
+    return Container(
+      height: 70.h,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: Obx(() => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _buildNavItem(
+            "assets/home/nab/home.png",
+            'Home',
+            0,
+          ),
+          _buildNavItem(
+            "assets/home/nab/services.png",
+            'Services',
+            1,
+          ),
+          _buildNavItem(
+            "assets/home/nab/activity.png",
+            'Activity',
+            2,
+          ),
+          _buildNavItem(
+            "assets/home/nab/account.png",
+            'Account',
+            3,
+          ),
+        ],
+      )),
+    );
+  }
+
+  Widget _buildNavItem(String assetPath, String label, int index) {
+    final isSelected = controller.index.value == index;
+
+    return InkWell(
+      onTap: () => controller.changeIndex(index),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // ColorFiltered works only on GRAYSCALE images
+          ColorFiltered(
+            colorFilter: ColorFilter.mode(
+              isSelected ? Colors.black : const Color(0xFF87878A),
+              BlendMode.srcIn,
+            ),
+            child: Image.asset(
+              assetPath,
+              width: 26.w,
+              height: 26.h,
+
+            ),
+          ),
+          SizedBox(height: 4.h),
+          Text(
+            label,
+            style: GoogleFonts.inter(
+              fontSize: 12.sp,
+              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+              color: isSelected ? Colors.black : const Color(0xFF87878A),
+            ),
+          ),
+        ],
       ),
     );
   }
