@@ -1,8 +1,11 @@
 // ==================== CONTROLLER ====================
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 import '../model/ServiceCategory.dart';
+import '../views/NotificationView.dart';
 
 class HomeController extends GetxController {
   final RxList<ServiceCategory> suggestions = <ServiceCategory>[].obs;
@@ -17,22 +20,28 @@ class HomeController extends GetxController {
 
   void loadData() {
     suggestions.value = [
-      ServiceCategory(name: 'Ride', icon: '🚗'),
-      ServiceCategory(name: 'Moto', icon: '🏍️'),
-      ServiceCategory(name: 'Taxi Rent', icon: '🚕'),
-      ServiceCategory(name: 'Intercity', icon: '🚗'),
+      ServiceCategory(name: 'Ride', icon: 'assets/home/grid/ride.png'),
+      ServiceCategory(name: 'Moto', icon: 'assets/home/grid/moto.png'),
+      ServiceCategory(
+        name: 'Taxi Rent',
+        icon: 'assets/home/grid/taxi_rent.png',
+      ),
+      ServiceCategory(
+        name: 'Intercity',
+        icon: 'assets/home/grid/Intercity.png',
+      ),
     ];
 
     moreWaysToUse.value = [
       PromotionCard(
         title: 'Go For Ride',
         description: 'Ride in a fully electric vehicle',
-        imageUrl: 'assets/go_for_ride.png',
+        imageUrl: 'assets/home/grid/home_one_grid_one.png',
       ),
       PromotionCard(
         title: 'Try a Ride Share',
         description: 'Seamless trips, together',
-        imageUrl: 'assets/ride_share.png',
+        imageUrl: 'assets/home/grid/home_grid.png',
       ),
     ];
 
@@ -40,12 +49,12 @@ class HomeController extends GetxController {
       PromotionCard(
         title: 'Go on Stop Ride',
         description: 'Take an electric bike or scooter',
-        imageUrl: 'assets/stop_ride.png',
+        imageUrl: 'assets/home/grid/home_grid.png',
       ),
       PromotionCard(
         title: 'Add a Ride Share',
         description: 'Pick up something on the',
-        imageUrl: 'assets/add_ride_share.png',
+        imageUrl: 'assets/home/grid/home_grid_four.png',
       ),
     ];
   }
@@ -56,6 +65,7 @@ class HomeController extends GetxController {
 
   void onNotificationTap() {
     // Navigate to notifications
+    Get.to(() => NotificationView());
   }
 
   void onLaterTap() {

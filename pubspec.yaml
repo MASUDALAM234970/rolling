@@ -61,5 +61,12 @@ flutter:
      - assets/auth/
      - assets/home/nab/home.png
      - assets/home/nab/
+     - assets/home/grid/home_grid.png
+     - assets/home/grid/
+     - assets/home/bike.png
+     - assets/home/car_one.png
+     - assets/home/nab/activity_one.png
+     - assets/home/acvitiy.png
+
 
 

@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/HomeController.dart';
 import '../model/ServiceCategory.dart';
 import 'NavbarView.dart';
 
-
-
-
 // ==================== VIEW ====================
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-
-    final HomeController controller= Get.put(HomeController());
+    final HomeController controller = Get.put(HomeController());
     return Scaffold(
       backgroundColor: const Color(0xFFFAFAFA),
       body: SafeArea(
@@ -43,7 +40,10 @@ class HomeView extends GetView<HomeController> {
                     Stack(
                       children: [
                         IconButton(
-                          icon: const Icon(Icons.notifications_outlined, size: 28),
+                          icon: const Icon(
+                            Icons.notifications_outlined,
+                            size: 28,
+                          ),
                           onPressed: () => controller.onNotificationTap(),
                         ),
                         Positioned(
@@ -70,14 +70,21 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     Expanded(
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 14,
+                        ),
                         decoration: BoxDecoration(
                           color: const Color(0xFFE8E8E8),
                           borderRadius: BorderRadius.circular(30),
                         ),
                         child: Row(
                           children: [
-                            const Icon(Icons.search, color: Color(0xFF666666), size: 24),
+                            const Icon(
+                              Icons.search,
+                              color: Color(0xFF666666),
+                              size: 24,
+                            ),
                             const SizedBox(width: 12),
                             Text(
                               'S',
@@ -94,7 +101,10 @@ class HomeView extends GetView<HomeController> {
                     GestureDetector(
                       onTap: () => controller.onLaterTap(),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 14,
+                        ),
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(30),
@@ -102,7 +112,11 @@ class HomeView extends GetView<HomeController> {
                         ),
                         child: const Row(
                           children: [
-                            Icon(Icons.access_time, color: Color(0xFF1A1A1A), size: 20),
+                            Icon(
+                              Icons.access_time,
+                              color: Color(0xFF1A1A1A),
+                              size: 20,
+                            ),
                             SizedBox(width: 8),
                             Text(
                               'Later',
@@ -125,22 +139,22 @@ class HomeView extends GetView<HomeController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       'Suggestions',
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xFF1A1A1A),
+                      style: GoogleFonts.inter(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF0D1A3E),
                       ),
                     ),
                     GestureDetector(
                       onTap: () => controller.onSeeAllSuggestions(),
-                      child: const Text(
+                      child: Text(
                         'See all',
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xFF1A1A1A),
+                        style: GoogleFonts.inter(
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xFF0D1A3E),
                         ),
                       ),
                     ),
@@ -151,12 +165,13 @@ class HomeView extends GetView<HomeController> {
 
                 // Suggestions Grid
                 Obx(
-                      () => SizedBox(
-                    height: 120,
+                  () => SizedBox(
+                    height: 76,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.suggestions.length,
-                      separatorBuilder: (context, index) => const SizedBox(width: 12),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 12),
                       itemBuilder: (context, index) {
                         final suggestion = controller.suggestions[index];
                         return _SuggestionCard(
@@ -169,27 +184,28 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
 
-                const SizedBox(height: 30),
+                SizedBox(height: 25.h),
 
                 // More ways to use Section
-                const Text(
+                Text(
                   'More ways to use',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF1A1A1A),
+                  style: GoogleFonts.inter(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF0D1A3E),
                   ),
                 ),
 
                 const SizedBox(height: 16),
 
                 Obx(
-                      () => SizedBox(
+                  () => SizedBox(
                     height: 260,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.moreWaysToUse.length,
-                      separatorBuilder: (context, index) => const SizedBox(width: 12),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 12),
                       itemBuilder: (context, index) {
                         final card = controller.moreWaysToUse[index];
                         return _PromotionCard(
@@ -201,27 +217,28 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
 
-                const SizedBox(height: 30),
+              //  const SizedBox(height: 10),
 
                 // Save everyday Section
-                const Text(
+                 Text(
                   'Save everyday',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFF1A1A1A),
+                  style: GoogleFonts.inter(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF0D1A3E),
                   ),
                 ),
 
                 const SizedBox(height: 16),
 
                 Obx(
-                      () => SizedBox(
+                  () => SizedBox(
                     height: 260,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.saveEveryday.length,
-                      separatorBuilder: (context, index) => const SizedBox(width: 12),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 12),
                       itemBuilder: (context, index) {
                         final card = controller.saveEveryday[index];
                         return _PromotionCard(
@@ -233,18 +250,15 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
 
-                const SizedBox(height: 20),
+               //const SizedBox(height: 20),
               ],
             ),
           ),
         ),
       ),
-
-
     );
   }
 }
-
 
 class _SuggestionCard extends StatelessWidget {
   final String name;
@@ -262,26 +276,24 @@ class _SuggestionCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 120,
-        padding: const EdgeInsets.all(16),
+        width: 85.w,
+        height: 64.h,
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
-          color: const Color(0xFFE8E8E8),
-          borderRadius: BorderRadius.circular(16),
+          color: const Color(0xFFE7E8EC),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              icon,
-              style: const TextStyle(fontSize: 40),
-            ),
-            const SizedBox(height: 8),
+            Image.asset(icon, width: 26, height: 26),
+            // const SizedBox(height: 8),
             Text(
               name,
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-                color: Color(0xFF1A1A1A),
+              style: GoogleFonts.inter(
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFF000000),
               ),
             ),
           ],
@@ -296,75 +308,73 @@ class _PromotionCard extends StatelessWidget {
   final PromotionCard card;
   final VoidCallback onTap;
 
-  const _PromotionCard({
-    required this.card,
-    required this.onTap,
-  });
+  const _PromotionCard({required this.card, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 300,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: Colors.white,
-        ),
+        width: 216.w,
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Image
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius: const BorderRadius.vertical(
+                top: Radius.circular(16),
+              ),
               child: Container(
-                height: 160,
-                decoration: const BoxDecoration(
-                  color: Color(0xFFE8E8E8),
-                ),
+                height: 120,
+                decoration: const BoxDecoration(color: Color(0xFFE8E8E8)),
                 child: Image.asset(
                   card.imageUrl,
                   width: double.infinity,
                   fit: BoxFit.cover,
                   errorBuilder: (context, error, stackTrace) {
                     return const Center(
-                      child: Icon(Icons.image, size: 50, color: Colors.grey),
+                      child: Icon(Icons.image, weight: 10, color: Colors.grey),
                     );
                   },
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Expanded(
+
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 16),
                         child: Text(
                           card.title,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xFF1A1A1A),
+                          style: GoogleFonts.inter(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xFF000000),
                           ),
                         ),
                       ),
-                      const Icon(Icons.arrow_forward, size: 20),
-                    ],
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    card.description,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFF666666),
                     ),
+                     Padding(
+                       padding: const EdgeInsets.only(right: 50,top: 16),
+                       child: Icon(Icons.arrow_forward, size: 20),
+                     ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  card.description,
+                  style: GoogleFonts.inter(
+                    fontSize: 12.sp,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFF4C4C4C),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
@@ -372,5 +382,3 @@ class _PromotionCard extends StatelessWidget {
     );
   }
 }
-
-
