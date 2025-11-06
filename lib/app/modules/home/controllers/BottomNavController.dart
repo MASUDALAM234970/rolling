@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 import '../../account/views/ProfileScreen.dart';
 import '../../account/views/SettingsScreen.dart';
+import '../views/Activity_views.dart';
 import '../views/HomeView.dart';
 import '../views/Servicesviews.dart';
 
@@ -16,7 +17,7 @@ class BottomNavController extends GetxController {
   final screens = [
     HomeView(),
     Servicesviews(),
-    SettingsScreen(),
+    ActivityView(),
     ProfileScreen()
 
 
