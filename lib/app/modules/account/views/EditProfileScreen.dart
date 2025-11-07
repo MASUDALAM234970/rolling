@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import '../controllers/EditProfileController.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -23,7 +26,11 @@ class EditProfileScreen extends GetView<EditProfileController> {
               const Icon(Icons.arrow_back_ios, color: Colors.black, size: 20),
               Text(
                 'Back',
-                style: GoogleFonts.inter(fontSize: 16.sp, color: Colors.black),
+                style: GoogleFonts.inter(
+                  fontSize: 15.sp,
+                  color: Color(0xff676769),
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ],
           ),
@@ -33,21 +40,21 @@ class EditProfileScreen extends GetView<EditProfileController> {
         title: Text(
           'Profile',
           style: GoogleFonts.inter(
-            fontSize: 20.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: Colors.black,
+            color: Color(0xff0D1A3E),
           ),
         ),
         centerTitle: true,
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: (){},
             child: Text(
               'Edit',
               style: GoogleFonts.inter(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                color: const Color(0xFF00D9A5),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFF10B981),
               ),
             ),
           ),
@@ -55,11 +62,11 @@ class EditProfileScreen extends GetView<EditProfileController> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 30.h),
+              SizedBox(height: 15.h),
 
               // Profile Image with Edit Icon
               Center(
@@ -67,40 +74,48 @@ class EditProfileScreen extends GetView<EditProfileController> {
                   children: [
                     Obx(
                       () => CircleAvatar(
-                        radius: 60.r,
+                        radius: 42.r,
                         backgroundColor: Colors.grey[300],
                         backgroundImage:
                             controller.profileImage.value.isNotEmpty
                             ? FileImage(File(controller.profileImage.value))
-                            : const NetworkImage(
-                                    'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+                            : const AssetImage(
+                                    'assets/account/profile/profile.png',
                                   )
                                   as ImageProvider,
                       ),
                     ),
+
+                    // Circular BackdropFilter
+                    Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: ClipOval(
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 0, sigmaY: 0),
+                            // Adjust blur
+                            child: Container(
+                              width: 84.r,
+                              // Diameter = 2 * radius of CircleAvatar
+                              height: 84.r,
+                              color: const Color(0x66000000),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
                     Positioned(
-                      bottom: 0,
-                      right: 0,
+                      left: 20,
+                      top: 35,
+                      right: 25,
                       child: GestureDetector(
                         onTap: controller.pickImage,
-                        child: Container(
-                          width: 36.w,
-                          height: 36.h,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black.withOpacity(0.2),
-                                blurRadius: 8,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                          ),
-                          child: const Icon(
-                            Icons.edit,
-                            color: Colors.black,
-                            size: 18,
+                        child: SizedBox(
+                          width: 20.w,
+                          height: 20.h,
+                          child: Image.asset(
+                            "assets/account/profile/PencilAlt.png",
                           ),
                         ),
                       ),
@@ -108,16 +123,15 @@ class EditProfileScreen extends GetView<EditProfileController> {
                   ],
                 ),
               ),
-
-              SizedBox(height: 40.h),
+              SizedBox(height: 30.h),
 
               // Your Name Field
               Text(
                 'Your Name',
                 style: GoogleFonts.inter(
                   fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff0D1A3E),
                 ),
               ),
               SizedBox(height: 12.h),
@@ -128,6 +142,7 @@ class EditProfileScreen extends GetView<EditProfileController> {
                   color: const Color(0xFF7D7F88),
                 ),
                 decoration: InputDecoration(
+                  fillColor: Color(0xffF5F6FA),
                   hintText: 'Enter your name',
                   hintStyle: GoogleFonts.inter(
                     fontSize: 16.sp,
@@ -138,20 +153,22 @@ class EditProfileScreen extends GetView<EditProfileController> {
                     vertical: 16.h,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: BorderSide(color: Color(0xff676769)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: BorderSide(color: Color(0xff676769)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
+                    borderRadius: BorderRadius.circular(8.r),
+
                     borderSide: const BorderSide(
-                      color: Color(0xFF00D9A5),
-                      width: 2,
+                      color: Color(0xff676769),
+                      width: 1,
                     ),
                   ),
+                  //fillColor: Color(0xff676769),
                 ),
               ),
 
@@ -162,8 +179,8 @@ class EditProfileScreen extends GetView<EditProfileController> {
                 'Phone Number',
                 style: GoogleFonts.inter(
                   fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff0D1A3E),
                 ),
               ),
               SizedBox(height: 12.h),
@@ -174,7 +191,9 @@ class EditProfileScreen extends GetView<EditProfileController> {
                   fontSize: 16.sp,
                   color: const Color(0xFF7D7F88),
                 ),
+
                 decoration: InputDecoration(
+                  fillColor: Color(0xffF5F6FA),
                   hintText: 'Enter phone number',
                   hintStyle: GoogleFonts.inter(
                     fontSize: 16.sp,
@@ -185,20 +204,22 @@ class EditProfileScreen extends GetView<EditProfileController> {
                     vertical: 16.h,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: BorderSide(color: Color(0xff676769)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: BorderSide(color: Color(0xff676769)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
+                    borderRadius: BorderRadius.circular(8.r),
+
                     borderSide: const BorderSide(
-                      color: Color(0xFF00D9A5),
-                      width: 2,
+                      color: Color(0xff676769),
+                      width: 1,
                     ),
                   ),
+                  //fillColor: Color(0xff676769),
                 ),
               ),
 
@@ -209,8 +230,8 @@ class EditProfileScreen extends GetView<EditProfileController> {
                 'Your ID Number',
                 style: GoogleFonts.inter(
                   fontSize: 16.sp,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff0D1A3E),
                 ),
               ),
               SizedBox(height: 12.h),
@@ -221,7 +242,9 @@ class EditProfileScreen extends GetView<EditProfileController> {
                   fontSize: 16.sp,
                   color: const Color(0xFF7D7F88),
                 ),
+
                 decoration: InputDecoration(
+                  fillColor: Color(0xffF5F6FA),
                   hintText: 'Enter ID number',
                   hintStyle: GoogleFonts.inter(
                     fontSize: 16.sp,
@@ -232,42 +255,48 @@ class EditProfileScreen extends GetView<EditProfileController> {
                     vertical: 16.h,
                   ),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: BorderSide(color: Color(0xff676769)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
+                    borderRadius: BorderRadius.circular(8.r),
+                    borderSide: BorderSide(color: Color(0xff676769)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.r),
+                    borderRadius: BorderRadius.circular(8.r),
+
                     borderSide: const BorderSide(
-                      color: Color(0xFF00D9A5),
-                      width: 2,
+                      color: Color(0xff676769),
+                      width: 1,
                     ),
                   ),
+                  //fillColor: Color(0xff676769),
                 ),
               ),
 
               SizedBox(height: 40.h),
 
               // Update Button
-              GestureDetector(
-                onTap: controller.updateProfile,
-                child: Container(
-                  width: double.infinity,
-                  height: 52.h,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF0A1F44),
-                    borderRadius: BorderRadius.circular(12.r),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Update',
-                      style: GoogleFonts.inter(
-                        fontSize: 17.sp,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
+              SizedBox(
+                width: 361.w,
+                height: 57.h,
+                child: GestureDetector(
+                  onTap: controller.updateProfile,
+                  child: Container(
+                    width: double.infinity,
+                    height: 52.h,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF0D1A3E),
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Update',
+                        style: GoogleFonts.inter(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

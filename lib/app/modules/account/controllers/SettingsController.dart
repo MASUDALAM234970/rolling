@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../views/PolicyScreen.dart';
+import '../views/change_password_views.dart';
 enum ScreenType { privacyPolicy, deleteAccount }
 class SettingsController extends GetxController {
   var screenType = ScreenType.privacyPolicy.obs;
@@ -13,91 +16,37 @@ Deleting your account removes personal information our database. Tour email beco
 
 
   void navigateToChangePassword() {
-    Get.snackbar(
-      'Change Password',
-      'Opening change password screen...',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.grey.withOpacity(0.8),
-      colorText: Colors.white,
-    );
-    // Navigate to change password screen
-    // Get.to(() => const ChangePasswordScreen());
+
+     Get.to(() =>  ChangePasswordViews());
   }
+
+
 
   void navigateToPrivacyPolicy() {
+    // Get.snackbar(
+    //   'Privacy Policy',
+    //   'Opening privacy policy...',
+    //   snackPosition: SnackPosition.BOTTOM,
+    //   backgroundColor: Colors.grey.withOpacity(0.8),
+    //   colorText: Colors.white,
+    // );
+    // Navigate to the PolicyScreen and pass the correct ScreenType
+    Get.to(() => PolicyScreen(screenType: ScreenType.privacyPolicy));
+  }
+
+  void navigateToDeleteAccount() {
     Get.snackbar(
-      'Privacy Policy',
-      'Opening privacy policy...',
+      'Delete Account',
+      'Opening delete account screen...',
       snackPosition: SnackPosition.BOTTOM,
       backgroundColor: Colors.grey.withOpacity(0.8),
       colorText: Colors.white,
     );
-    // Navigate to privacy policy screen
-    // Get.to(() => const PrivacyPolicyScreen());
+    // Navigate to the PolicyScreen and pass the correct ScreenType
+    Get.to(() => PolicyScreen(screenType: ScreenType.deleteAccount));
   }
 
-  void showDeleteAccountDialog() {
-    Get.dialog(
-      AlertDialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        title: const Text(
-          'Delete Account',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.red,
-          ),
-        ),
-        content: const Text(
-          'Are you sure you want to delete your account? This action cannot be undone.',
-          style: TextStyle(fontSize: 15),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(),
-            child: const Text(
-              'Cancel',
-              style: TextStyle(
-                color: Colors.grey,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Get.back();
-              deleteAccount();
-            },
-            child: const Text(
-              'Delete',
-              style: TextStyle(
-                color: Colors.red,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
-  // void deleteAccount() {
-  //   // Handle delete account logic here
-  //   Get.snackbar(
-  //     'Account Deleted',
-  //     'Your account has been deleted',
-  //     snackPosition: SnackPosition.BOTTOM,
-  //     backgroundColor: Colors.red.withOpacity(0.8),
-  //     colorText: Colors.white,
-  //     duration: const Duration(seconds: 2),
-  //   );
-  //
-  //   // Navigate to login/welcome screen
-  //   // Get.offAll(() => const LoginScreen());
-  // }
-
-  // PolicyScreenController
 
 
 
@@ -106,21 +55,7 @@ Deleting your account removes personal information our database. Tour email beco
     screenType.value = type;
   }
 
-  void deleteAccount() {
-    Get.defaultDialog(
-      title: 'Confirm Deletion',
-      middleText: 'Are you absolutely sure you want to delete your account? This action cannot be undone.',
-      textConfirm: 'Delete',
-      textCancel: 'Cancel',
-      confirmTextColor: Colors.white,
-      buttonColor: Colors.red,
-      cancelTextColor: Colors.grey,
-      onConfirm: () {
-        Get.back(); // Close dialog
-        performDelete();
-      },
-    );
-  }
+
 
   void performDelete() {
     // Handle actual delete logic here

@@ -37,8 +37,9 @@ class PolicyScreen extends GetView<SettingsController> {
               Text(
                 'Back',
                 style: GoogleFonts.inter(
-                  fontSize: 16.sp,
-                  color: Colors.black,
+                  fontSize: 15.sp,
+                  color: Color(0xff676769),
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ],
@@ -47,11 +48,11 @@ class PolicyScreen extends GetView<SettingsController> {
         ),
         leadingWidth: 90.w,
         title: Text(
-          title,
+          'Privacy Policy',
           style: GoogleFonts.inter(
-            fontSize: 20.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: Colors.black,
+            color: Color(0xff0D1A3E),
           ),
         ),
         centerTitle: true,
@@ -79,20 +80,20 @@ class PolicyScreen extends GetView<SettingsController> {
             Container(
               padding: EdgeInsets.all(20.w),
               child: GestureDetector(
-                onTap: controller.deleteAccount,
+                onTap: (){},
                 child: Container(
                   width: double.infinity,
-                  height: 52.h,
+                  height: 57.h,
                   decoration: BoxDecoration(
-                    color: Colors.red,
+                    color: Color(0xffC8102E),
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Center(
                     child: Text(
                       'Delete',
                       style: GoogleFonts.inter(
-                        fontSize: 17.sp,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
                         color: Colors.white,
                       ),
                     ),

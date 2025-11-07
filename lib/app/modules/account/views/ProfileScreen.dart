@@ -24,8 +24,9 @@ class ProfileScreen extends GetView<ProfileController> {
               Text(
                 'Back',
                 style: GoogleFonts.inter(
-                  fontSize: 16.sp,
-                  color: Colors.black,
+                  fontSize: 15.sp,
+                  color: Color(0xff676769),
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ],
@@ -36,9 +37,9 @@ class ProfileScreen extends GetView<ProfileController> {
         title: Text(
           'Profile',
           style: GoogleFonts.inter(
-            fontSize: 20.sp,
+            fontSize: 18.sp,
             fontWeight: FontWeight.w600,
-            color: Colors.black,
+            color: Color(0xff0D1A3E),
           ),
         ),
         centerTitle: true,
@@ -48,9 +49,9 @@ class ProfileScreen extends GetView<ProfileController> {
             child: Text(
               'Edit',
               style: GoogleFonts.inter(
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w500,
-                color: const Color(0xFF00D9A5),
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w400,
+                color: const Color(0xFF10B981),
               ),
             ),
           ),
@@ -61,34 +62,38 @@ class ProfileScreen extends GetView<ProfileController> {
           children: [
             SizedBox(height: 20.h),
 
-            // Profile Image and Info
             Center(
               child: Column(
                 children: [
                   CircleAvatar(
-                    radius: 60.r,
-                    backgroundImage: const NetworkImage(
-                      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+                    radius: 50.r,
+                    // Correctly use AssetImage with backgroundImage
+                    backgroundImage: AssetImage(
+                      "assets/account/profile/profile.png",
                     ),
                   ),
                   SizedBox(height: 16.h),
-                  Obx(() => Text(
-                    controller.userName.value,
-                    style: GoogleFonts.inter(
-                      fontSize: 22.sp,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
+                  Obx(
+                    () => Text(
+                      controller.userName.value,
+                      style: GoogleFonts.inter(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                      ),
                     ),
-                  )),
+                  ),
                   SizedBox(height: 6.h),
-                  Obx(() => Text(
-                    controller.userEmail.value,
-                    style: GoogleFonts.inter(
-                      fontSize: 15.sp,
-                      fontWeight: FontWeight.w400,
-                      color: const Color(0xFF7D7F88),
+                  Obx(
+                    () => Text(
+                      controller.userEmail.value,
+                      style: GoogleFonts.inter(
+                        fontSize: 13.sp,
+                        fontWeight: FontWeight.w400,
+                        color: const Color(0xFF87878A),
+                      ),
                     ),
-                  )),
+                  ),
                 ],
               ),
             ),
@@ -102,23 +107,28 @@ class ProfileScreen extends GetView<ProfileController> {
                 children: [
                   Expanded(
                     child: _buildActionCard(
-                      icon: Icons.headset_mic_outlined,
+                      icon: Image.asset(
+                        "assets/account/profile/headset-help.png",
+                      ),
+
                       label: 'Support',
                       onTap: controller.navigateToSupport,
                     ),
                   ),
-                  SizedBox(width: 12.w),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: _buildActionCard(
-                      icon: Icons.account_balance_wallet_outlined,
+                      icon: Image.asset(
+                        "assets/account/profile/settings_wallet.png",
+                      ),
                       label: 'Wallet',
                       onTap: controller.navigateToWallet,
                     ),
                   ),
-                  SizedBox(width: 12.w),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: _buildActionCard(
-                      icon: Icons.mail_outline,
+                      icon: Image.asset("assets/account/profile/inbox.png"),
                       label: 'Inbox',
                       onTap: controller.navigateToInbox,
                     ),
@@ -131,32 +141,33 @@ class ProfileScreen extends GetView<ProfileController> {
 
             // Menu Items
             _buildMenuItem(
-              icon: Icons.settings_outlined,
+
+              icon: Image.asset("assets/account/profile/setting.png"),
               title: 'Settings',
               onTap: controller.navigateToSettings,
             ),
             _buildMenuItem(
-              icon: Icons.person_outline,
+              icon: Image.asset("assets/account/profile/settings_user.png"),
               title: 'Setup Profile',
               onTap: controller.navigateToSetupProfile,
             ),
             _buildMenuItem(
-              icon: Icons.history,
+              icon: Image.asset("assets/account/profile/settings_watch.png"),
               title: 'Trip History',
               onTap: controller.navigateToTripHistory,
             ),
             _buildMenuItem(
-              icon: Icons.help_outline,
+              icon: Image.asset("assets/account/profile/settings_question.png"),
               title: 'About Us',
               onTap: controller.navigateToAboutUs,
             ),
             _buildMenuItem(
-              icon: Icons.business_outlined,
+              icon: Image.asset("assets/account/profile/settings_business.png"),
               title: 'Business Profile',
               onTap: controller.navigateToBusinessProfile,
             ),
             _buildMenuItem(
-              icon: Icons.logout,
+              icon: Image.asset("assets/account/profile/settings_log_out.png"),
               title: 'Log Out',
               onTap: controller.logout,
               isLogout: true,
@@ -166,33 +177,35 @@ class ProfileScreen extends GetView<ProfileController> {
           ],
         ),
       ),
-
     );
   }
 
   Widget _buildActionCard({
-    required IconData icon,
+    required Widget icon, // Change from IconData to Widget (Image)
     required String label,
     required VoidCallback onTap,
   }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: 110.w,
+        height: 100.h,
         padding: EdgeInsets.symmetric(vertical: 20.h),
         decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(12.r),
+          color: const Color(0xffF5F6FA),
+          borderRadius: BorderRadius.circular(8.r),
         ),
         child: Column(
           children: [
-            Icon(icon, size: 32.sp, color: Colors.black),
+            SizedBox(width: 24, height: 24, child: icon),
+            // Display the image directly here
             SizedBox(height: 8.h),
             Text(
               label,
               style: GoogleFonts.inter(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: Color(0xff1E1E1E),
               ),
             ),
           ],
@@ -202,7 +215,7 @@ class ProfileScreen extends GetView<ProfileController> {
   }
 
   Widget _buildMenuItem({
-    required IconData icon,
+    required Widget icon, // Change from IconData to Widget (Image)
     required String title,
     required VoidCallback onTap,
     bool isLogout = false,
@@ -210,43 +223,30 @@ class ProfileScreen extends GetView<ProfileController> {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
           children: [
-            Container(
-              width: 40.w,
-              height: 40.h,
-              decoration: BoxDecoration(
-                color: const Color(0xFFF5F5F5),
-                shape: BoxShape.circle,
-              ),
-              child: Icon(
-                icon,
-                size: 22.sp,
-                color: isLogout ? Colors.red : const Color(0xFF7D7F88),
-              ),
-            ),
+            SizedBox(width: 25, height: 25, child: icon),
+
             SizedBox(width: 16.w),
             Text(
               title,
               style: GoogleFonts.inter(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w500,
-                color: isLogout ? Colors.red : const Color(0xFF1D1E20),
+                color:  Color(0xFF676769),
               ),
             ),
-            const Spacer(),
-            if (!isLogout)
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 16.sp,
-                color: const Color(0xFF7D7F88),
-              ),
+            // const Spacer(),
+            // if (!isLogout)
+            //   Icon(
+            //     Icons.arrow_forward_ios,
+            //     size: 16.sp,
+            //     color: const Color(0xFF7D7F88),
+            //   ),
           ],
         ),
       ),
     );
   }
-
-
 }
