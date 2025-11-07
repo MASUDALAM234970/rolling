@@ -55,18 +55,22 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/splash/car.png
-     - assets/splash/
-     - assets/auth/map.png
-     - assets/auth/
-     - assets/home/nab/home.png
-     - assets/home/nab/
-     - assets/home/grid/home_grid.png
-     - assets/home/grid/
-     - assets/home/bike.png
-     - assets/home/car_one.png
-     - assets/home/nab/activity_one.png
-     - assets/home/acvitiy.png
+    - assets/splash/car.png
+    - assets/splash/
+    - assets/auth/map.png
+    - assets/auth/
+    - assets/home/nab/home.png
+    - assets/home/nab/
+    - assets/home/grid/home_grid.png
+    - assets/home/grid/
+    - assets/home/bike.png
+    - assets/home/car_one.png
+    - assets/home/nab/activity_one.png
+    - assets/home/acvitiy.png
+    - assets/account/profile/profile.png
+    - assets/account/profile/
+    - assets/account/setting/
+
 
 
 

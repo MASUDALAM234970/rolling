@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:rolling/app/modules/account/views/EditProfileScreen.dart';
+
+import '../views/SettingsScreen.dart';
 
 class ProfileController extends GetxController {
   var userName = 'John Deo'.obs;
@@ -30,11 +33,7 @@ class ProfileController extends GetxController {
   }
 
   void navigateToSettings() {
-    Get.snackbar(
-      'Settings',
-      'Opening settings...',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    Get.to(() => SettingsScreen());
   }
 
   void navigateToSetupProfile() {
@@ -84,10 +83,6 @@ class ProfileController extends GetxController {
   }
 
   void editProfile() {
-    Get.snackbar(
-      'Edit Profile',
-      'Opening edit profile...',
-      snackPosition: SnackPosition.BOTTOM,
-    );
+    Get.to(() => EditProfileScreen());
   }
 }
